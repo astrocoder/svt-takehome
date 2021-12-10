@@ -6,7 +6,7 @@ This is my submission for SVT's pallet transport microservice assignent.
 
 This microservice selects the nearest robot to a pallet using SVT's API
 
-The endpoint to this API, when run locally for instance, has the format
+To test this service, simply start run/debug in vs code. then in Postman, send a POST request to the API's endpoint, which has the format
 https://localhost:5001/api/GetClosest/{loadId}/{x}/{y}
 
 where 
