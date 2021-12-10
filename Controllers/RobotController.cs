@@ -9,20 +9,10 @@ using Newtonsoft.Json;
 
 namespace svt_robotics.Controllers
 {
-
-
-
-
-
-
     [ApiController]
     [Route("[controller]")]
     public class RobotController : ControllerBase
     {
-        private static readonly string[] Summaries = new[]
-        {
-            "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
-        };
 
         private readonly ILogger<RobotController> _logger;
 
@@ -42,14 +32,28 @@ namespace svt_robotics.Controllers
             return Math.Sqrt(Pow2(p2.X - p1.X) + Pow2(p2.Y - p1.Y));
         }
 
+        /// <summary>
+        /// Get closest robot to set of 2D coordinates
+        /// </summary>
+        /// <param name="loadId">The load Id of the pallet to be moved</param>
+        /// <param name="x">The load's X-coordinate</param>
+        /// <param name="y">The load's X-coordinate</param>
+        /// <returns>RobotResult task</returns>
         [Route("~/api/GetClosest/{loadId}/{x}/{y}")]
         [HttpPost]
         public RobotResult GetClosest(int loadId, int x, int y)
         {
-            var res = GetClosestAsync(loadId,  x,  y);
+            var res = GetClosestAsync(loadId, x, y);
             return res.Result;
         }
 
+        /// <summary>
+        /// Get closest robot to set of 2D coordinates
+        /// </summary>
+        /// <param name="loadId">The load Id of the pallet to be moved</param>
+        /// <param name="x">The load's X-coordinate</param>
+        /// <param name="y">The load's X-coordinate</param>
+        /// <returns>RobotResult task</returns>
         [Route("~/api/GetClosestAsync/{loadId}/{x}/{y}")]
         [HttpPost]
         public async Task<RobotResult> GetClosestAsync(int loadId, int x, int y)
@@ -109,7 +113,7 @@ namespace svt_robotics.Controllers
                         Console.WriteLine(response.StatusCode);
                 }
             }
-            
+
             return ret.ToRes();
         }
 

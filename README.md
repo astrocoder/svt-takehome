@@ -30,3 +30,4 @@ the return payload is:
 2. Since the service does not track the pallet, it would be beneficial to track the pallets that each robot picks up/moves
 3. Determine if chosen robot has sufficient battery power to deliver the pallet. If not, chose next closest with enough power, etc.
 4. The exercise assumes all pallets have the same weight, which is unlikely. An algorithm to calculate power/weight for delivery would be necessary. 
+5. Update documentation
